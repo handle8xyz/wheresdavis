@@ -1,6 +1,6 @@
 INPUT_FILE = "input.csv"
 CACHE_FILE = "cache.json"  # This file will be created if it doesn't exist
-OUTPUT_JS = "site/data.js"
+OUTPUT_JS = "data.js"
 
 """
 Input CSV format:
