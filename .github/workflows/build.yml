@@ -1,0 +1,28 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Process and push data
+        run: |
+          python process.py
+          git config --local user.email "wheresdavis@bot.com"
+          git config --local user.name "Where's Davis Bot"
+          git commit -a -m "Push updated data ${{ github.sha }}"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force_with_lease: true

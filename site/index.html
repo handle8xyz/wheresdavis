@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Where's Davis?</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+      
+    </style>
+  </head>
+
+  <body class="stackedit">
+    <h2 id="title">Where's Davis right now?</h2>
+    <div id="date-and-picker">
+      <p id="current-date">... Loading ...</p>
+      <input type="range" id="date-slider", min="1", max="18", value="10">
+    </div>
+    <br>
+    <p id="location">... Loading ...</p>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
