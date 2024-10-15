@@ -9,21 +9,12 @@
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     />
-    <style>
-      #map {
-        height: 400px;
-        width: 100%;
-      }
-      
-    </style>
+    <link rel="stylesheet" href="index.css" />
   </head>
 
   <body class="stackedit">
-    <h2 id="title">Where's Davis right now?</h2>
-    <div id="date-and-picker">
-      <p id="current-date">... Loading ...</p>
-      <input type="range" id="date-slider", min="1", max="18", value="10">
-    </div>
+    <h1 id="title">Where's Davis right now?</h1>
+    <input type="date" id="date-picker">
     <br>
     <p id="location">... Loading ...</p>
     <div id="map"></div>

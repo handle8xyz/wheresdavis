@@ -5,11 +5,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // `data` is a JavaScript object that contains the data from the JSON file loaded in index.html
-const slider = document.getElementById('date-slider');
-const date_element = document.getElementById('current-date');
+const picker = document.getElementById('date-picker');
+const currentDate = new Date();
 
-slider.min = new Date("10 September 2024").getTime();
-slider.max = new Date("10 November 2024").getTime();
+function inputDate(date) {
+    return date.toISOString().split('T')[0]
+}
+
+picker.min = inputDate(new Date("10 September 2024"));
+picker.max = inputDate(new Date("10 November 2024"));
+picker.value = inputDate(currentDate);
 
 function displayError(info) {
     console.error('No location data found for:', info);
@@ -24,17 +29,16 @@ function displayError(info) {
     return;
 }
 
-async function updateDisplay(currentDate) {
+async function updateDisplay(date) {
     if (!data) {
         return
     }
-    date_element.textContent = currentDate.toDateString();
 
     let currentLocName = null;
     for (const row of data["dates"]) {
         const start = new Date(row["start"]);
         const end = new Date(row["end"]);
-        if (currentDate >= start && currentDate <= end) {
+        if (date >= start && date <= end) {
 
             currentLocName = row["name"];
             break;
@@ -61,21 +65,13 @@ async function updateDisplay(currentDate) {
         }
 
     } else {
-        return displayError(currentDate);
+        return displayError(date);
     }
 }
 
 updateDisplay(new Date());
 
-// Add a slider to control the date, creating the element in JavaScript
-const currentDate = new Date();
-// Dates range from the one month before the current date to one month after
-slider.min = currentDate.getTime() - 1000 * 60 * 60 * 24 * 30;
-slider.max = currentDate.getTime() + 1000 * 60 * 60 * 24 * 30;
-slider.step = 1000 * 60 * 60 * 24; // 1 day in milliseconds
-slider.value = currentDate.getTime();
-
-slider.addEventListener('input', () => {
-    const currentDate = new Date(parseInt(slider.value));
+picker.addEventListener('input', () => {
+    const currentDate = new Date(picker.value);
     updateDisplay(currentDate);
 });

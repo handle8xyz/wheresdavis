@@ -1,0 +1,33 @@
+/* Center everything in the page */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+#date-and-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+    gap: 20pt;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+  }
+
+#location {
+    margin-top: 20px;
+    font-size: 20pt;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 25pt;
+}
