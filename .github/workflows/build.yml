@@ -1,3 +1,9 @@
+# Build Workflow
+name: build
+
+# Run on Push
+on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
