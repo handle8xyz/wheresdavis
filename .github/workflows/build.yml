@@ -25,7 +25,7 @@ jobs:
           python process.py
           git config --local user.email "wheresdavis@bot.com"
           git config --local user.name "Where's Davis Bot"
-          git commit -a -m "Push updated data ${{ github.sha }}"
+          git commit -a -m "Push updated data ${{ github.sha }}" --allow-empty
 
       - name: Push changes
         uses: ad-m/github-push-action@master
